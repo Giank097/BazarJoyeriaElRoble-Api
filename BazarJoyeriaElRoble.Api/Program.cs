@@ -1,6 +1,11 @@
+using BazarJoyeriaElRoble.Infrastructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<DbBazarJoyeriaElRobleContext>(options => options.UseMySql("name=ConnectionStrings:DbBazarJoyeriaElRoble",ServerVersion.Parse("8.0.31-mysql")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
