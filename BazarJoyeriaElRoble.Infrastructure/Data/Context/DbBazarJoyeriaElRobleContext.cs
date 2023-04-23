@@ -38,13 +38,13 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
         modelBuilder.Entity<TbCategory>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_category");
 
             entity.HasIndex(e => e.Name, "name_UNIQUE").IsUnique();
 
-            entity.Property(e => e.CategoryId).HasColumnName("category_id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
@@ -64,13 +64,13 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
         modelBuilder.Entity<TbDiscount>(entity =>
         {
-            entity.HasKey(e => e.DiscountId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_discount");
 
             entity.HasIndex(e => e.Name, "name_UNIQUE").IsUnique();
 
-            entity.Property(e => e.DiscountId).HasColumnName("discount_id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Active).HasColumnName("active");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
@@ -94,13 +94,13 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
         modelBuilder.Entity<TbOrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_order_details");
 
             entity.HasIndex(e => e.UserId, "fk_tb_order_details_tb_user1_idx");
 
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
@@ -156,7 +156,7 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
         modelBuilder.Entity<TbProduct>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_product");
 
@@ -166,7 +166,7 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
             entity.HasIndex(e => e.DiscountId, "fk_tb_product_tb_discount1_idx");
 
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
@@ -202,13 +202,13 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
         modelBuilder.Entity<TbProductInventory>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_product_inventory");
 
-            entity.Property(e => e.ProductId)
+            entity.Property(e => e.Id)
                 .ValueGeneratedNever()
-                .HasColumnName("product_id");
+                .HasColumnName("id");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
@@ -220,15 +220,15 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
                 .HasColumnName("modified_at");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
 
-            entity.HasOne(d => d.Product).WithOne(p => p.TbProductInventory)
-                .HasForeignKey<TbProductInventory>(d => d.ProductId)
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.TbProductInventory)
+                .HasForeignKey<TbProductInventory>(d => d.Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_tb_product_inventory_tb_product1");
         });
 
         modelBuilder.Entity<TbUser>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("tb_user");
 
@@ -236,9 +236,9 @@ public partial class DbBazarJoyeriaElRobleContext : DbContext
 
             entity.HasIndex(e => e.Phone, "phone_UNIQUE").IsUnique();
 
-            entity.Property(e => e.UserId)
+            entity.Property(e => e.Id)
                 .ValueGeneratedNever()
-                .HasColumnName("user_id");
+                .HasColumnName("id");
             entity.Property(e => e.Address)
                 .HasMaxLength(100)
                 .HasColumnName("address");

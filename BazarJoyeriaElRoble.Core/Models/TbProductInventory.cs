@@ -5,7 +5,7 @@ namespace BazarJoyeriaElRoble.Infrastructure;
 
 public partial class TbProductInventory
 {
-    public int ProductId { get; set; }
+    public int Id { get; set; }
 
     public int Quantity { get; set; }
 
@@ -15,5 +15,5 @@ public partial class TbProductInventory
 
     public DateTime? DeletedAt { get; set; }
 
-    public virtual TbProduct Product { get; set; } = null!;
+    public virtual TbProduct IdNavigation { get; set; } = null!;
 }

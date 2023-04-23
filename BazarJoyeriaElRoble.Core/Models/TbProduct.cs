@@ -5,7 +5,7 @@ namespace BazarJoyeriaElRoble.Infrastructure;
 
 public partial class TbProduct
 {
-    public int ProductId { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
