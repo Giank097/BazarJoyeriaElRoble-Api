@@ -20,9 +20,4 @@
     <ProjectReference Include="..\BazarJoyeriaElRoble.Infrastructure\BazarJoyeriaElRoble.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>
